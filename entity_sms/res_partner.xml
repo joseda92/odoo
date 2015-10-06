@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <act_window name="SMS Partner"
+        res_model="esms.compose"
+        src_model="res.partner"
+        key2="client_action_multi"
+        context="{'default_field_id':'mobile','default_record_id':active_id,'default_model_id':active_model}"
+        view_mode="form" target="new" 
+        view_type="form"
+        id="act_send_sms_partner_menu" />
+
+        <record model="ir.ui.view" id="E164_mobile_placeholder">
+            <field name="name">E.164 mobile placeholder</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+      	        <field name="mobile" position="replace">
+      	            <field name="mobile" placeholder="e.g. +61 427 671 760"/>
+      	        </field>
+      	    </field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,51 @@
+<div style="margin-left:100px;margin-right:100px;">
+<h2>Description</h2>
+Allows you send/receive SMS's using the twilio, smsglobal, smsgateway.ca gateways<br>
+<br>
+<b>Individual gateway features</b>
+<table style="width:100%;">
+<tr><th>SMS Gateway</th><th>Send SMS</th><th>Delivary Receipts</th><th>Receive SMS</th></tr>
+<tr><td>twilio</td><td>O</td><td>O</td><td>O</td></tr>
+<tr><td>smsglobal</td><td>O</td><td>X</td><td>X</td></tr>
+<tr><td>smsgateway.ca</td><td>O</td><td>X</td><td>X</td></tr>
+</table>
+<br>
+<h2>Features</h2>
+<ul>
+<li>Configure multiple accounts for each gateway</li>
+<li>View SMS history</li>
+<li>Simple sending of smses for leads and partners</li>
+<li>Automaticlly creates new leads if a lead or partner doesn't have that mobile number
+<li>Built modularly so you can easily add a new gateway of your choice</li>
+</ul>
+<h2>Using the module</h2>
+<h3>Initial Configuration</h3>
+1.  Create a twilio/smsglobal/smsgateway account and add credit<br>
+2.  Go to Settings->SMS Gateway Configuration->Accounts and enter the all the api settings<br>
+<br>
+<h3>Sending an SMS to partners / customers / suppliers and leads</h3>
+1.	Simply select Send SMS from the more menu and type in your message<br>
+<br>
+<h3>Sending SMS from any model</h3>
+1.  Add widget="smsfield" to any field you wish treat as a mobile number<br>
+2.  Click on the field to open the SMS compose window<br>
+<br>
+<h3>View SMS Histroy</h3>
+1.  Go to Settings->SMS Gateway Configuration->SMS History<br>
+<br>
+<h3>Create SMS Template</h3>
+1.  Go to Settings->SMS Gateway Configuration->SMS Templates<br>
+2.  Select the target model, sms account and type away<br>
+<br>
+<h2>Feature Ideas</h2>
+1.  Inbound MMS<br>
+2.  Oubound MMS<br>
+3.  Import sms/mss history from mobile phones<br>
+4.  Send SMS from code<br>
+5.  Mass SMS similiar to mass email with reports on delivary rate and OPT outs<br>
+<br>
+<h3>Contributors</h3>
+alex2grad<br>
+<br>
+Find a bug? want a feature? send an email to sythiltech@gmail.com<br>
+</div>

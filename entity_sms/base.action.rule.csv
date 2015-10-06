@@ -1,0 +1,2 @@
+"id","server_action_ids/id","active","name","model_id/id","kind"
+"__export__.base_action_rule_2","__export__.ir_act_server_176","True","Automated SMS Response","entity_sms.model_esms_history","On Creation"
