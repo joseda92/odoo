@@ -30,7 +30,7 @@ class esms_compose(models.Model):
                               required=True, string="From Mobile Number")
     to_number = fields.Char('To Mobile Number', required=True, readonly=True,
                             default=demo)
-    sms_content = fields.Text('SMS Content')
+    sms_content = fields.Text('SMS Content', readonly=True)
     partner_ids = fields.Many2many('res.partner', 'compose_partner_ids',
                                    'esms_compose_id', 'partner_id',
                                    string='MMS Attachments', default=demo2)
@@ -41,10 +41,7 @@ class esms_compose(models.Model):
     def load_template(self):
         if self.template_id.id:
             esms_templates = self.env['esms.templates']
-            sms_rendered_content = esms_templates.render_template(self.template_id.template_body,
-                                                                  self.template_id.model_id.model,
-                                                                  self.record_id)
-
+            sms_rendered_content = self.template_id.template_body
             self.from_number = self.template_id.sms_from
             self.sms_content = sms_rendered_content
             self.sms_gateway = self.template_id.account_gateway.id
