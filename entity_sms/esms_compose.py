@@ -39,9 +39,11 @@ class esms_compose(models.Model):
 
     @api.onchange('template_id')
     def load_template(self):
-        if self.template_id.id != False:
-
-            sms_rendered_content = self.env['esms.templates'].render_template(self.template_id.template_body, self.template_id.model_id.model, self.record_id)
+        if self.template_id.id:
+            esms_templates = self.env['esms.templates']
+            sms_rendered_content = esms_templates.render_template(self.template_id.template_body,
+                                                                  self.template_id.model_id.model,
+                                                                  self.record_id)
 
             self.from_number = self.template_id.sms_from
             self.sms_content = sms_rendered_content
@@ -50,13 +52,17 @@ class esms_compose(models.Model):
     @api.multi
     def send_entity(self):
         self.ensure_one()
+        esms_templates = self.env['esms.templates']
 
         for x in self.partner_ids:
             gateway_model = self.sms_gateway.account_gateway.gateway_model_name
+            sms_content = esms_templates.render_template(self.template_id.template_body,
+                                                         self.template_id.model_id.model,
+                                                         x.id)
             my_sms = self.env[gateway_model].send_message(self.sms_gateway.id,
                                                           self.from_number,
                                                           x.mobile,
-                                                          self.sms_content,
+                                                          sms_content,
                                                           self.model_id,
                                                           self.record_id,
                                                           self.field_id)
@@ -83,7 +89,6 @@ class esms_compose(models.Model):
                     #    'default_record_id': self.record_id,
                     #    'default_model_id': self.model_id,
                     #    'default_error_message': error_message}
-         
                 #}
         return True
 
