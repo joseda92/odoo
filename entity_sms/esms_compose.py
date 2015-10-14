@@ -7,13 +7,13 @@ import requests
 from datetime import datetime
 
 
-class esms_compose(models.Model):
+class EsmsCompose(models.Model):
     _name = 'esms.compose'
 
     def compute_default_value(self):
         return self.env.user.partner_id.mobile
 
-    def demo(self):
+    def _get_to_number(self):
         partner_id = self.env.context.get('active_id')
         return self.env['res.partner'].browse(partner_id).mobile
 
@@ -29,11 +29,11 @@ class esms_compose(models.Model):
     from_number = fields.Char(default=compute_default_value,
                               required=True, string="From Mobile Number")
     to_number = fields.Char('To Mobile Number', required=True, readonly=True,
-                            default=demo)
+                            default=_get_to_number)
     sms_content = fields.Text('SMS Content', readonly=True)
     partner_ids = fields.Many2many('res.partner', 'compose_partner_ids',
                                    'esms_compose_id', 'partner_id',
-                                   string='MMS Attachments', default=demo2)
+                                   string='Customers', default=demo2)
     field_id = fields.Char('Field Name')
     template_id = fields.Many2one('esms.templates', 'Template')
 
@@ -71,7 +71,7 @@ class esms_compose(models.Model):
             else:
                 error_message = my_sms.response_string
 
-	        #display the screen with an error code if the sms/mms was not successfully sent
+            #display the screen with an error code if the sms/mms was not successfully sent
             #if my_sms.delivary_state == "failed":
              #   return {
               #      'type': 'ir.actions.act_window',
@@ -89,7 +89,8 @@ class esms_compose(models.Model):
                 #}
         return True
 
-class esms_mms(models.Model):
+
+class EsmsMms(models.Model):
     _name = "esms.mms"
 
     partner_id = fields.Many2one('esms.compose')

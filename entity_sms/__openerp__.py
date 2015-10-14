@@ -18,7 +18,7 @@
         'esms.gateways.csv',
         'ir.actions.server.csv',
         'base.action.rule.csv',
-	'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         'smsgateway/gateway_config.xml',
         'smsglobal/gateway_config.xml',
         'twilio/gateway_config.xml',
