@@ -18,7 +18,7 @@ class esms_history(models.Model):
     from_mobile = fields.Char(string="From Mobile", readonly=True)
     to_mobile = fields.Char(string="To Mobile", readonly=True)
     sms_content = fields.Text(string="SMS Message", readonly=True)
-    #record_name = fields.Char(string="Record Name", compute="_rec_nam")
+    record_name = fields.Char(string="Record Name", compute="_rec_nam")
     status_string = fields.Char(string="Response String", readonly=True)
     status_code = fields.Selection((('RECEIVED','Received'), ('failed', 'Failed to Send'), ('queued', 'Queued'), ('successful', 'Sent'), ('DELIVRD', 'Delivered'), ('EXPIRED','Timed Out'), ('UNDELIV', 'Undelivered')), string='Delivary State', readonly=True)
     sms_gateway_message_id = fields.Char(string="SMS Gateway Message ID", readonly=True)
@@ -26,8 +26,8 @@ class esms_history(models.Model):
     my_date = fields.Datetime(string="Send/Receive Date", readonly=True, help="The date and time the sms is received or sent")
     delivary_error_string = fields.Text(string="Delivary Error")
 
-    #@api.one
-    #def _rec_nam(self):
-        #if self.model_id != False:
-         #   my_record = self.env[self.model_id.model].search([('id','=',self.record_id)])
-          #  self.record_name = my_record.name
+    @api.one
+    def _rec_nam(self):
+        if self.model_id != False:
+            my_record = self.env[self.model_id.model].search([('id','=',self.record_id)])
+            self.record_name = my_record.name

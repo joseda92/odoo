@@ -1,0 +1,4 @@
+"gateway_model_name","name"
+"esms.twilio","TWILIO"
+"esms.smsgateway","SMSGATEWAY"
+"esms.smsglobal","SMS GLOBAL"

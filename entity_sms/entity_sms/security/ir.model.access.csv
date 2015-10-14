@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_esms_accounts_user,access_esms_accounts,model_esms_accounts,base.group_user,1,0,0,0
+access_esms_accounts_system,access_esms_accounts,model_esms_accounts,base.group_system,1,1,1,1
+access_esms_history_user,access_esms_history,model_esms_history,base.group_user,1,0,1,0
+access_esms_history_system,access_esms_history,model_esms_history,base.group_system,1,1,1,1
+access_esms_gateways,access_esms_gateways,model_esms_gateways,,1,0,0,0
+access_esms_smsglobal,access_esms_smsglobal,model_esms_smsglobal,,1,0,0,0
+access_esms_twilio,access_esms_twilio,model_esms_twilio,,1,0,0,0
+access_esms_smsgateway,access_esms_smsgateway,model_esms_smsgateway,,1,0,0,0

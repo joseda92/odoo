@@ -1,0 +1,5 @@
+id,name,state,type,model_id/id,use_relational_model,code
+__export__.ir_act_server_176,Auto Respond SMS,code,ir.actions.server,entity_sms.model_esms_history,Use the base model of the action,"autoreslist = env[""esms.autoresponse""].search([('from_mobile','=',object.to_mobile), ('keyword','=ilike',object.sms_content)])
+if len(autoreslist) > 0 and object.direction == ""I"":
+    autores = autoreslist[0]
+    env[object.account_id.account_gateway.gateway_model_name].send_message(object.account_id.id, object.to_mobile, object.from_mobile, autores.sms_content, object.model_id.model, object.record_id, object.field_id.name)"

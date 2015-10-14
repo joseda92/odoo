@@ -49,8 +49,6 @@ class twilio_core(models.Model):
 	    sms_gateway_message_id = my_elements[0].text
             delivary_state = "successful"
         
-        #import ipdb
-        #ipdb.set_trace()
         #only record the sent sms/mms if it was successfully sent, multi send sms records it inconsiderate
 #        if delivary_state == "successful":
 #            my_model = self.env['ir.model'].search([('model','=',my_model_name)])
