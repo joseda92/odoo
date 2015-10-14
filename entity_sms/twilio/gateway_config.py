@@ -55,7 +55,7 @@ class twilio_core(models.Model):
         if delivary_state == "successful":
 #            my_model = self.env['ir.model'].search([('model','=',my_model_name)])
 #	    my_field = self.env['ir.model.fields'].search([('name','=',my_field_name)])
-            esms_history = selv.env['esms.history']
+            esms_history = self.env['esms.history']
             esms_history = esms_history.create(
                 {
                 #'field_id':my_field[0].id,
